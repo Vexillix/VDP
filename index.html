@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片字幕生成器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">图片字幕生成器</h1>
+        
+        <div class="main-content">
+            <!-- 左侧配置面板 -->
+            <div class="config-panel">
+                <!-- 上传图片区域 -->
+                <div class="section">
+                    <h2 class="section-title">上传图片</h2>
+                    <div class="upload-area">
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        <button class="upload-btn" id="uploadBtn">
+                            <span class="plus-icon">+</span>
+                            选择图片
+                        </button>
+                        <div class="file-name" id="fileName"></div>
+                    </div>
+                </div>
+
+                <!-- 字幕设置区域 -->
+                <div class="section">
+                    <h2 class="section-title">字幕设置</h2>
+                    <div class="config-item">
+                        <label>字幕高度</label>
+                        <div class="input-group">
+                            <input type="number" id="subtitleHeight" value="80" min="40" max="200">
+                            <span class="unit">px</span>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <label>字体大小</label>
+                        <div class="input-group">
+                            <input type="number" id="fontSize" value="40" min="12" max="100">
+                            <span class="unit">px</span>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <label>字体颜色</label>
+                        <div class="color-group">
+                            <input type="color" id="fontColor" value="#FFFFFF">
+                            <input type="text" id="fontColorText" value="#FFFFFF" class="color-text">
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <label>轮廓颜色</label>
+                        <div class="color-group">
+                            <input type="color" id="outlineColor" value="#000000">
+                            <input type="text" id="outlineColorText" value="#000000" class="color-text">
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <label>字体样式</label>
+                        <select id="fontFamily">
+                            <option value="Microsoft YaHei">微软雅黑</option>
+                            <option value="SimSun">宋体</option>
+                            <option value="SimHei">黑体</option>
+                            <option value="KaiTi">楷体</option>
+                            <option value="Arial">Arial</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label>字体粗细</label>
+                        <select id="fontWeight">
+                            <option value="normal">正常</option>
+                            <option value="bold">粗体</option>
+                            <option value="lighter">细体</option>
+                            <option value="300">300</option>
+                            <option value="500">500</option>
+                            <option value="700">700</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 字幕内容区域 -->
+                <div class="section">
+                    <h2 class="section-title">字幕内容</h2>
+                    <textarea id="subtitleContent" placeholder="请输入字幕内容，每行将显示为一行字幕&#10;例如：&#10;这是Manus的相关照片&#10;也是一个历史性的时刻"></textarea>
+                </div>
+
+                <!-- 操作按钮 -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="generateBtn">生成字幕图片</button>
+                    <button class="btn btn-secondary" id="saveBtn">保存图片</button>
+                </div>
+            </div>
+
+            <!-- 右侧预览面板 -->
+            <div class="preview-panel">
+                <h2 class="section-title">预览</h2>
+                <div class="preview-container">
+                    <canvas id="previewCanvas"></canvas>
+                    <div class="preview-placeholder" id="previewPlaceholder">
+                        <p>请先上传图片</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知提示 -->
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
